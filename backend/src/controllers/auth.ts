@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import { authLoginSchema, authRegisterSchema } from "../schemas/auth";
 import { createUser, getUserByName } from "../services/user";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+import { createJWT } from "../libs/jwt";
 
 export const register: RequestHandler = async(req, res) => {
     const data = authRegisterSchema.safeParse(req.body);
@@ -48,11 +48,7 @@ export const login: RequestHandler = async(req, res) => {
         return;
     };
 
-    const token = jwt.sign(
-        { id: user.id, email: user.name },
-        process.env.JWT_KEY as string,
-        { expiresIn: "1h" }
-    );
+    const token = createJWT(user.id, user.name);
 
     res.json({ user: user, token: token });
 };
