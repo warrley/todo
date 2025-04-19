@@ -1,7 +1,8 @@
 import { RequestHandler } from "express";
 import { authLoginSchema, authRegisterSchema } from "../schemas/auth";
 import { createUser, getUserByName } from "../services/user";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 
 export const register: RequestHandler = async(req, res) => {
     const data = authRegisterSchema.safeParse(req.body);
@@ -31,7 +32,7 @@ export const login: RequestHandler = async(req, res) => {
     if(!data.success) {
         res.json({ error: data.error.flatten().fieldErrors });
         return;
-    }
+    };
 
     const { name, password } = data.data;
 
@@ -45,7 +46,13 @@ export const login: RequestHandler = async(req, res) => {
     if(!passwordMatch) {
         res.json({ error:  "wrong password"});
         return;
-    }
+    };
 
-    res.json({ user: user });
+    const token = jwt.sign(
+        { id: user.id, email: user.name },
+        process.env.JWT_KEY as string,
+        { expiresIn: "1h" }
+    );
+
+    res.json({ user: user, token: token });
 };
