@@ -2,7 +2,6 @@ import { RequestHandler } from "express";
 import { authLoginSchema, authRegisterSchema } from "../schemas/auth";
 import { createUser, getUserByName } from "../services/user";
 import bcrypt from "bcrypt";
-import { createJWT } from "../libs/jwt";
 
 export const register: RequestHandler = async(req, res) => {
     const data = authRegisterSchema.safeParse(req.body);
@@ -48,7 +47,6 @@ export const login: RequestHandler = async(req, res) => {
         return;
     };
 
-    const token = createJWT(user.id, user.name);
 
-    res.json({ user: user, token: token });
+    res.json({ user: user });
 };

@@ -1,19 +1,7 @@
-import { RequestHandler } from "express";
-import { readJWT } from "../libs/jwt";
+import { Response } from "express";
+import { AuthenticatedRequest } from "../types/express";
 
-export const todos: RequestHandler = (req, res) => {
-    const authorization = req.headers.authorization;
-    if(!authorization) {
-        res.json({ error: "without token" });
-        return;
-    };
-
-    const token = authorization.split(' ')[1];
-
-    try {
-        const decoded = readJWT(token);
-        res.json({ message: "valid token", user: decoded})
-    } catch (err) {
-        res.json({ error: err });
-    };
+export const todos = (req: AuthenticatedRequest, res: Response) => {
+    const user = req.user;
+    res.json({ user })
 };

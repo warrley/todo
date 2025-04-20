@@ -1,6 +1,7 @@
 import express from "express";
-import * as MainControler from "../controllers/todos"
+import * as todoController from "../controllers/todos"
+import { privateRoute } from "../middleware/private-route";
 
 export const todoRouter = express.Router();
 
-todoRouter.get("/", MainControler.todos);
+todoRouter.get("/", privateRoute, todoController.todos)
