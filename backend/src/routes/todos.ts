@@ -6,3 +6,4 @@ export const todoRouter = express.Router();
 
 todoRouter.get("/", privateRoute, todoController.getTodos);
 todoRouter.post("/", privateRoute, todoController.createTodo);
+todoRouter.put("/", privateRoute, todoController.editTodo);

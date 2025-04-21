@@ -19,4 +19,19 @@ export const createTodoDb = async(title: string, description: string | undefined
         }
     })
     return newTodo;
-}
+};
+
+export const editTodoDb = async (id: number, title: string, description: string | undefined, status: boolean | undefined) => {
+    const todo = await prisma.todo.update({
+        where: {
+            id: id
+        },
+        data: {
+            title: title,
+            description: description,
+            status: status
+        }
+    });
+
+    return todo;
+};
