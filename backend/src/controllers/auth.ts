@@ -22,6 +22,8 @@ export const register: RequestHandler = async(req, res) => {
 
     const newUser = await createUser(name, hashPassword);
 
+    console.log({ newUser })
+
     res.json({ newUser });
 };
 
@@ -47,6 +49,7 @@ export const login: RequestHandler = async(req, res) => {
         return;
     };
 
+    console.log({ user })
 
     res.json({ user: user });
 };

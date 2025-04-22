@@ -3,11 +3,13 @@ import { mainRouter } from './routes/main';
 import { authRouter } from './routes/auth';
 import dotenv from "dotenv"
 import { todoRouter } from './routes/todos';
+import cors from "cors"
 
 const server = express();
 
 dotenv.config();
 
+server.use(cors());
 server.use(express.json());
 
 server.use("/", mainRouter);
