@@ -1,0 +1,209 @@
+type: collection.insomnia.rest/5.0
+name: todo
+meta:
+  id: wrk_848a263623c441fbb09173fa501e835e
+  created: 1745069301903
+  modified: 1745069301903
+collection:
+  - name: auth
+    meta:
+      id: fld_f53b878116544554b3cbce31b0efc749
+      created: 1745069453710
+      modified: 1745069453710
+      sortKey: -1745069453710
+    children:
+      - url: "{{base}}/auth/register"
+        name: /register
+        meta:
+          id: req_9984b82edb0647739a317a8c9c24117e
+          created: 1745069456628
+          modified: 1745428961665
+          isPrivate: false
+          sortKey: -1745069458324
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "marcos",
+            	"password": "opa",
+            	"confirmPassword": "opa"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base}}/auth/login"
+        name: /login
+        meta:
+          id: req_ac9b5c7e0c5e43a18ccd9d62eb93d334
+          created: 1745079236352
+          modified: 1745236287024
+          isPrivate: false
+          sortKey: -1745079236352
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "guilherme",
+            	"password": "opa"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: todos
+    meta:
+      id: fld_b91f348f0ac041f2b019759128b28510
+      created: 1745092274886
+      modified: 1745092274886
+      sortKey: -1745092274886
+    children:
+      - url: "{{base}}/todos"
+        name: /todos
+        meta:
+          id: req_813f6578adaf4d2cb2539000c979b5a2
+          created: 1745092340646
+          modified: 1745150635392
+          isPrivate: false
+          sortKey: -1745092340646
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_4546b4a5720749beb843c6e1d83018d6
+          - id: pair_cd3c727472c349d7b8582192e36e1ef6
+            name: Authorization
+            value: Basic Z3VpbGhlcm1lOm9wYQ==
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base}}/todos"
+        name: /todos
+        meta:
+          id: req_781109fac8eb401e976cecd3f8d72f8f
+          created: 1745150291526
+          modified: 1745237144223
+          isPrivate: false
+          sortKey: -1745150291526
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "go to UFC"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_524e7c567ea3461d8aa5784ea073c9c9
+          - id: pair_9476ec3a09334c14b54e8124553b5bc2
+            name: Authorization
+            value: Basic Z3VpbGhlcm1lOm9wYQ==
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base}}/todos"
+        name: /todos
+        meta:
+          id: req_00a8e8b5cf1c4bb5a00137d422eb8a82
+          created: 1745237187885
+          modified: 1745238709898
+          isPrivate: false
+          sortKey: -1745150291626
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": 6,
+            	"title": "make the todo api",
+            	"description": "make the api for todo list with react and nod",
+            	"status": true
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.0.2
+            id: pair_d60654a90ad24f73a429d72711cd080d
+          - id: pair_2d40c2cceb5a4651b050dd4a95dfca6f
+            name: Authorization
+            value: Basic Z3VpbGhlcm1lOm9wYQ==
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: "{{base}}/ping"
+    name: /ping
+    meta:
+      id: req_1ca911470df642938039d5d60d46945f
+      created: 1745069306081
+      modified: 1745069447659
+      isPrivate: false
+      sortKey: -1745069306081
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_0940c8da7f12e42ce8b75109458b4488dc0d221b
+    created: 1745069301906
+    modified: 1745069301906
+environments:
+  name: Base Environment
+  meta:
+    id: env_0940c8da7f12e42ce8b75109458b4488dc0d221b
+    created: 1745069301905
+    modified: 1745069435755
+    isPrivate: false
+  data:
+    base: http://localhost:3344
